@@ -43,6 +43,24 @@ $coursevideos_1[0]
 $coursevideos_1[0] = 'changed'
 $coursevideos_1
 
-#Key vaulue stores
-#Hash tables
-#test23
+#Key vaulue stores or Hash tables
+
+<#Set 
+of 
+coments#>
+
+$ServerNames=@{
+    Dev='server01'
+    Prod='server02'
+    Test='server03'
+}
+$ServerNames
+$ServerNames['Dev']
+$ServerNames.Dev
+$ServerNames.add('QA','server04')
+
+
+#Objects
+
+
+

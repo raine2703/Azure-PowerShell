@@ -31,3 +31,6 @@ $CourseList=@(
 
 $CourseList
 $CourseList[0].name
+
+
+#Continuing working with Objects

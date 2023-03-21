@@ -1,0 +1,1 @@
+Get-Help New-AzResourceGroup -Full

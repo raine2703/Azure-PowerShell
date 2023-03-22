@@ -13,6 +13,7 @@ $AccountKind="StorageV2"
 $AccountSKU="Standard_LRS"
 $Location = "North Europe"
 
+
 $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $AccountName `
 -Location $Location -Kind $AccountKind -SkuName $AccountSKU
 

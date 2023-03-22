@@ -1,5 +1,6 @@
 #Creating Resource group, Storage account, Container and uploading Blob
 
+
 #Creating Resource Group
 $ResourceGroupName ="RG3"
 $Location = "North Europe"
@@ -17,14 +18,15 @@ $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Na
 
 Get-AzStorageAccount
 
+
 #Creating Container
 $ContainerName="data"
 
 New-AzStorageContainer -Name $ContainerName -Context $StorageAccount.Context -Permission Blob
 Get-AzStorageContainer -Context $StorageAccount.Context
 
-#Uploading Blob
 
+#Uploading Blob
 $BlobObject=@{
     FileLocation="sample.txt"
     ObjectName ="sample.txt"
@@ -35,12 +37,6 @@ Set-AzStorageBlobContent -Context $StorageAccount.Context -Container $ContainerN
 
 Get-AzStorageBlob -Context $StorageAccount.Context -container $ContainerName
 
+
 #Delete Blob
 Remove-AzStorageBlob -Container $containername -Blob $BlobObject.ObjectName -context $StorageAccount.Context
-
-
-
-
-
-
-

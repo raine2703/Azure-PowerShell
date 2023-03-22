@@ -1,6 +1,7 @@
 #Creating Resource group, Storage account, Container and uploading Blob
 #Defining Storage Context as variable
 
+
 #Creating Resource Group
 $ResourceGroupName ="RG3"
 $Location = "North Europe"
@@ -15,6 +16,7 @@ $Location = "North Europe"
 
 $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $AccountName `
 -Location $Location -Kind $AccountKind -SkuName $AccountSKU
+
 
 #Creating Container
 $ContainerName="data2"
@@ -38,6 +40,7 @@ Set-AzStorageBlobContent -Context $ctx -Container $ContainerName `
 -File $BlobObject.FileLocation -Blob $BlobObject.ObjectName
 
 Get-AzStorageBlob -Context $ctx -container $ContainerName
+
 
 #Remove Container
 Remove-AzStorageBlob -Container $ContainerName -Blob $BlobObject.ObjectName -context $ctx

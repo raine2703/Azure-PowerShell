@@ -1,4 +1,4 @@
-# Understanding the scope of variables
+# Experimenting with scope of variables
 
 if($i -ne 10)
 {
@@ -31,5 +31,5 @@ if($i -ne 10)
 }
 else {
     $i=25
-    'The value of i is equal to 10'
+    'The value of i is equal to 25!'
 }

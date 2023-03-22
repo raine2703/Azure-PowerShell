@@ -15,6 +15,7 @@ Connect-AzAccount -ServicePrincipal -Credential $Credential -Tenant $TenandID
 
 $ResourceGroupName ="RG3"
 $Location = "North Europe"
+#Creating new RG and assigning to object so it can be used later on if needed
 $RG=New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
 
 $GetRG = Get-AzResourceGroup | format-table

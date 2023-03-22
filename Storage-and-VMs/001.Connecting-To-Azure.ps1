@@ -11,11 +11,13 @@ $TenandID = "c20a49b8-2914-4624-a197-1e882bd3abf4"
 
 Connect-AzAccount -ServicePrincipal -Credential $Credential -Tenant $TenandID
 
-$ResourceGroupName ="powershell-grp"
+#Testing connection
+
+$ResourceGroupName ="RG3"
 $Location = "North Europe"
+$RG=New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
 
-New-AzResourceGroup -Name $ResourceGroupName -Location $Location
+$GetRG = Get-AzResourceGroup | format-table
+$GetRG
 
-Get-AzResourceGroup | format-table
-
-Remove-AzResourceGroup -name $ResourceGroupName
+$RemoveRG = Remove-AzResourceGroup -name $ResourceGroupName -Force

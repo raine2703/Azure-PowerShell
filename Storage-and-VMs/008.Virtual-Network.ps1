@@ -17,21 +17,21 @@ $VirtualNetwork = New-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupN
 
 #Checking result
 $VirtualNetwork
-(Get-AzVirtualNetwork).name
+$virtualNetwork.name
 
 #Adding another subnet
 Add-AzVirtualNetworkSubnetConfig -Name "SubnetC" -AddressPrefix "10.0.2.0/24" -VirtualNetwork $virtualNetwork
 #Applying configuration
 $virtualNetwork | Set-AzVirtualNetwork
 
-$virtualNetwork.subnets | format-table
+$virtualNetwork.subnets.name
 
 #Removing subnet
 Remove-AzVirtualNetworkSubnetConfig -Name "SubnetC" ` -VirtualNetwork $virtualNetwork
 $virtualNetwork | Set-AzVirtualNetwork
-$virtualNetwork.subnets | format-table
+$virtualNetwork.subnets.name
 
 #Delete Vnet
 Remove-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName -Force
-(Get-AzVirtualNetwork).name
+$virtualNetwork.name
 

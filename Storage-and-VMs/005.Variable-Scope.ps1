@@ -1,4 +1,4 @@
-# Experimenting with scope of variables
+# Experimenting with scope of variables 
 
 if($i -ne 10)
 {

@@ -18,7 +18,6 @@ $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Na
 
 
 #Creating file share
-
 $FileSharename = "fileshare"
 $Dicertory = "Folder1"
 
@@ -37,7 +36,6 @@ New-AzStorageShare @FileShareConfig
 
 #View file shares
 Get-AzStorageShare -Context $ctx
-
 
 
 #Create a new directory 
@@ -63,11 +61,14 @@ $FileDetails=@{
 #Set-AzStorageFileContent -ShareName $FileSharename -Source "sample.txt" -Path $Dicertory -Context $ctx
 Set-AzStorageFileContent @FileDetails
 
+
 #View files in Directory
 Get-AzStorageFile -ShareName $FileSharename -path $Dicertory -Context $ctx | Get-AzStorageFile
 
+
 #Download a file to the local system 
 Get-AzStorageFileContent -ShareName $Sharename -Path "recruitment\uploaded-sample.txt" -Destination "sample2.txt" -Context $ctx
+
 
 #Delete the file share
 Remove-AzStorageShare @FileShareConfig -Force

@@ -1,6 +1,5 @@
 #Creating File share with Directory. Uploading and downloading files from it. 
 
-
 #Creating Resource Group
 $ResourceGroupName ="RG3"
 $Location = "North Europe"

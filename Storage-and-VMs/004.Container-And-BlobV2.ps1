@@ -1,6 +1,5 @@
 #Creating Resource group, Storage account, Container and uploading Blob
 
-
 #Creating Resource Group
 $ResourceGroupName ="RG3"
 $Location = "North Europe"

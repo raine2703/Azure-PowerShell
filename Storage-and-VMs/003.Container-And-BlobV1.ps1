@@ -41,6 +41,22 @@ Set-AzStorageBlobContent -Context $ctx -Container $ContainerName `
 
 Get-AzStorageBlob -Context $ctx -container $ContainerName
 
-
-#Remove Container
+#Remove Blob
 Remove-AzStorageBlob -Container $ContainerName -Blob $BlobObject.ObjectName -context $ctx
+
+
+#Create 3 containers
+$Containers = 'cont1','cont2','cont3'
+
+foreach ($x in $Containers) {
+    New-AzStorageContainer -name $x -Permission off -Context $ctx
+}
+
+
+#Delete all containers
+$ContainerList = Get-AzStorageContainer -context $ctx
+$ContainerList
+
+foreach ($x in $ContainerList) {
+    Remove-AzStorageContainer -name $x.name -context $ctx
+}

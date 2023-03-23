@@ -1,8 +1,8 @@
 #Checking if resources alredy exist before creating them
 
 #Creating Resource Group
-$ResourceGroupName ="RG3"
-$Location = "North Europe"
+$ResourceGroupName="RG3"
+$Location="North Europe"
 
 $RG=$null
 if(Get-AzResourceGroup -name $ResourceGroupName -Location $Location -ErrorAction SilentlyContinue){
@@ -12,7 +12,7 @@ if(Get-AzResourceGroup -name $ResourceGroupName -Location $Location -ErrorAction
     $RG=New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 }
 
-$RemoveRG = Remove-AzResourceGroup -name $ResourceGroupName -Force
+$RemoveRG=Remove-AzResourceGroup -name $ResourceGroupName -Force
 
 Get-AzResourceGroup | format-table
 

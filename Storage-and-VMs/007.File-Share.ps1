@@ -2,27 +2,27 @@
 
 #Creating Resource Group
 $ResourceGroupName ="RG3"
-$Location = "North Europe"
+$Location="North Europe"
 $RG=New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
 
 
 #Creating Storage Account
-$AccountName = "rnstorage270355x"
+$AccountName="rnstorage270355x"
 $AccountKind="StorageV2"
 $AccountSKU="Standard_LRS"
-$Location = "North Europe"
+$Location="North Europe"
 
-$StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $AccountName `
+$StorageAccount=New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $AccountName `
 -Location $Location -Kind $AccountKind -SkuName $AccountSKU
 
 
 #Creating file share
-$FileSharename = "fileshare"
-$Dicertory = "Folder1"
+$FileSharename="fileshare"
+$Dicertory="Folder1"
 
 # Retrieve the context
-$Key = (Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -StorageAccountName $AccountName).Value[0]
-$ctx = New-AzStorageContext -StorageAccountName $AccountName -StorageAccountKey $Key
+$Key=(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -StorageAccountName $AccountName).Value[0]
+$ctx=New-AzStorageContext -StorageAccountName $AccountName -StorageAccountKey $Key
 
 #Contructing object with splating concept
 $FileShareConfig=@{

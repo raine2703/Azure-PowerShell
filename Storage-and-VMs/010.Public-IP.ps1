@@ -2,12 +2,12 @@
 
 
 $PublicIPAddressName="public-ip"
-$ResourceGroupName ="RG3"
+$ResourceGroupName="RG3"
 $Location="North Europe"
 $NetworkInterfaceName="Nic1" #Assuming its created
 
 #Creating Public IP
-$PublicIPAddress = New-AzPublicIpAddress -Name $PublicIPAddressName -ResourceGroupName $ResourceGroupName `
+$PublicIPAddress=New-AzPublicIpAddress -Name $PublicIPAddressName -ResourceGroupName $ResourceGroupName `
 -Location $Location -Sku "Standard" -AllocationMethod "Static"
 
 #Verifying its created
@@ -15,7 +15,7 @@ $PublicIPAddress = New-AzPublicIpAddress -Name $PublicIPAddressName -ResourceGro
 
 
 #NIC Details
-$NetworkInterface= Get-AzNetworkInterface -Name $NetworkInterfaceName -ResourceGroupName $ResourceGroupName
+$NetworkInterface=Get-AzNetworkInterface -Name $NetworkInterfaceName -ResourceGroupName $ResourceGroupName
 
 #NIC IP Config Details
 $IpConfig=Get-AzNetworkInterfaceIpConfig -NetworkInterface $NetworkInterface

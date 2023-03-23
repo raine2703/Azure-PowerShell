@@ -1,7 +1,7 @@
 #Creating and deleting Vnet with Subnet
 
-$ResourceGroupName ="RG3"
-$Location = "North Europe"
+$ResourceGroupName="RG3"
+$Location="North Europe"
 
 $VirtualNetworkName="Vnet"
 $VirtualNetworkAddressSpace="10.0.0.0/16"
@@ -12,7 +12,7 @@ $SubnetAddressSpace="10.0.0.0/24"
 $Subnet=New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressSpace
 
 #Creating Vnet
-$VirtualNetwork = New-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName `
+$VirtualNetwork=New-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName `
 -Location $Location -AddressPrefix $VirtualNetworkAddressSpace -Subnet $Subnet
 
 #Checking result

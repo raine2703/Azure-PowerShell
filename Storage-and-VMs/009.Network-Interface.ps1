@@ -1,17 +1,17 @@
 #Creating Network Interface. Attaching it to Subnet. Deleteing it.
 
-$ResourceGroupName ="RG3"
+$ResourceGroupName="RG3"
 $VirtualNetworkName="Vnet"
 $SubnetName="SubnetA"
-$Location = "North Europe"
+$Location="North Europe"
 $NetworkInterfaceName="Nic1"
 
 #Getting Details of Vnet and Subnet
 $VirtualNetwork=Get-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName
-$Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork
+$Subnet=Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork
 
 #Creating NIC
-$NetworkInterface = New-AzNetworkInterface -Name $NetworkInterfaceName `
+$NetworkInterface=New-AzNetworkInterface -Name $NetworkInterfaceName `
 -ResourceGroupName $ResourceGroupName -Location $Location `
 -Subnet $Subnet
 

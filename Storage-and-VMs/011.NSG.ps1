@@ -105,3 +105,7 @@ $VirtualNetwork | Set-AzVirtualNetwork
 
 #Assign NSG to NIC
 $nsg=Get-AzNetworkSecurityGroup -Name $NSGName -ResourceGroupName $ResourceGroupName
+$nic = Get-AzNetworkInterface -ResourceGroupName $ResourceGroupName -Name "Nic1"
+
+$nic.NetworkSecurityGroup = $nsg
+$nic | Set-AzNetworkInterface

@@ -71,3 +71,4 @@ Get-AzStorageFileContent -ShareName $Sharename -Path "recruitment\uploaded-sampl
 
 #Delete the file share
 Remove-AzStorageShare @FileShareConfig -Force
+

@@ -109,3 +109,4 @@ $nic = Get-AzNetworkInterface -ResourceGroupName $ResourceGroupName -Name "Nic1"
 
 $nic.NetworkSecurityGroup = $nsg
 $nic | Set-AzNetworkInterface 
+

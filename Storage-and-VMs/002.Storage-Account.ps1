@@ -15,3 +15,4 @@ $StorageAccount=New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name
 Get-AzStorageAccount
 
 $RemoveStorageAccount=Remove-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $AccountName -Force
+

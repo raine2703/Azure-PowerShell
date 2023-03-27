@@ -28,3 +28,4 @@ $NetworkInterface | Set-AzNetworkInterfaceIpConfig -PublicIpAddress $PublicIPAdd
 $NetworkInterface | Set-AzNetworkInterface
 #Verifying
 (Get-AzNetworkInterface -name $NetworkInterfaceName).ipconfigurations.PublicIpAddress.id
+

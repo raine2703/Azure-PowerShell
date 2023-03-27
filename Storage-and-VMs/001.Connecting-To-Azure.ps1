@@ -22,3 +22,4 @@ $GetRG=Get-AzResourceGroup | format-table
 $GetRG
 
 $RemoveRG=Remove-AzResourceGroup -name $ResourceGroupName -Force
+

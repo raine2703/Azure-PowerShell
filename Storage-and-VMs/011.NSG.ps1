@@ -67,6 +67,7 @@ Set-AzNetworkSecurityRuleConfig `
 -NetworkSecurityGroup $nsg `
 -Name "custom-rule" `
 -Description "Allow app port" `
+#changing to Deny
 -Access Deny `
 -Protocol * `
 -Direction Inbound `
@@ -97,7 +98,7 @@ Set-AzVirtualNetworkSubnetConfig `
     -Name $SubnetName `
     -VirtualNetwork $VirtualNetwork `
     -NetworkSecurityGroup $nsg `
-    -AddressPrefix $SubnetAddressSpace
+    -AddressPrefix $SubnetAddressSpace #or accessing array value $VirtualNetwork.Subnets[0].AddressPrefix
 
 #Updating Subnet
 $VirtualNetwork | Set-AzVirtualNetwork

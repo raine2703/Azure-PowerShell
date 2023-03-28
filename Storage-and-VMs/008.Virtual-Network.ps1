@@ -16,17 +16,29 @@ $VirtualNetwork=New-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupNam
 -Location $Location -AddressPrefix $VirtualNetworkAddressSpace -Subnet $Subnet
 
 #Checking result
-$VirtualNetwork
-$virtualNetwork.name
+(Get-AzVirtualNetwork -ResourceGroupName $ResourceGroupName).Name
 
-#Adding another subnet
+#Adding another subnet:
+
+$VirtualNetwork=Get-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName
+
 Add-AzVirtualNetworkSubnetConfig -Name "SubnetC" -AddressPrefix "10.0.2.0/24" -VirtualNetwork $virtualNetwork
-#Applying configuration
+#Applying Configuration
 $virtualNetwork | Set-AzVirtualNetwork
+#Checking Result
+(Get-AzVirtualNetwork -ResourceGroupName $ResourceGroupName -Name $VirtualNetworkName).Subnets.name
+(Get-AzVirtualNetwork -ResourceGroupName $ResourceGroupName -Name $VirtualNetworkName).Subnets[0].AddressPrefix
 
-$virtualNetwork.subnets.name
+#Subet + ip address foreach loop in a vnet
+$x=Get-AzVirtualNetwork -ResourceGroupName $ResourceGroupName -Name $VirtualNetworkName
+foreach ($a in $x.Subnets) {
+   $a.name + ' address prefix is ' + $a.AddressPrefix
+}
+#Another option to get subnet cofnig
+$x | Get-AzVirtualNetworkSubnetConfig
 
-#Removing subnet
+
+#Removing subnet (conected resources should be removed first)
 Remove-AzVirtualNetworkSubnetConfig -Name "SubnetC" ` -VirtualNetwork $virtualNetwork
 $virtualNetwork | Set-AzVirtualNetwork
 $virtualNetwork.subnets.name

@@ -18,11 +18,12 @@ $VirtualNetwork=New-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupNam
 #Checking result
 (Get-AzVirtualNetwork -ResourceGroupName $ResourceGroupName).Name
 
-#Adding another subnet:
 
+#Adding another subnet:
 $VirtualNetwork=Get-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName
 
 Add-AzVirtualNetworkSubnetConfig -Name "SubnetC" -AddressPrefix "10.0.2.0/24" -VirtualNetwork $virtualNetwork
+
 #Applying Configuration
 $virtualNetwork | Set-AzVirtualNetwork
 #Checking Result

@@ -18,8 +18,6 @@ $RG=New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 
 
-
-
 #Creating Vnet with Subnet
 
 #Default Subnet config
@@ -117,63 +115,5 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'Micros
 $VirtualMachine = Set-AzVMBootDiagnostic -Disable -VM $VirtualMachine
 
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$NetworkInterface= Get-AzNetworkInterface -Name $NetworkInterfaceName -ResourceGroupName $ResourceGroupName
-
-$VmConfig=New-AzVMConfig -Name $VmName -VMSize $VMSize
-
-Set-AzVMOperatingSystem -VM $VmConfig -ComputerName $VmName `
--Credential $Credential -Windows
-
-Set-AzVMSourceImage -VM $VmConfig -PublisherName "MicrosoftWindowsServer" `
--Offer "WindowsServer" -Skus "2019-Datacenter" -Version "latest"
-
-$Vm=Add-AzVMNetworkInterface -VM $VmConfig -Id $NetworkInterface.Id
-
-Set-AzVMBootDiagnostic -Disable -VM $Vm
-
-New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location `
--VM $Vm
 
 

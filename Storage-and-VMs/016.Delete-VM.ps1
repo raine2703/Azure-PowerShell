@@ -72,11 +72,11 @@ $NetworkSecurityGroupId
 
 #Getting name of NSG from
 $Length=$NetworkSecurityGroupId.Length
-$Position=$NetworkSecurityGroupId.LastIndexOf('/')
+$Position=$NetworkSecurityGroupId.LastIndexOf('/') #name starts from +1, using that later
 
 #Substring returns Strings between given range
 #ID is "/subscriptions/d030343c-fdd7-47cb-a6b7-b7027471025d/resourceGroups/powershell-grp/providers/Microsoft.Network/networkSecurityGroups/NSG"
-$NetworkSecurityGroupName=$NetworkSecurityGroupId.Substring($Position+1,$Length-$Position-1)
+$NetworkSecurityGroupName=$NetworkSecurityGroupId.Substring($Position+1,$Length-$Position-1) #-1 to ignore / and get count of 3!
 $NetworkSecurityGroupName
 
 #Disasociate NSG

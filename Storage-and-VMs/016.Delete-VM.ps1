@@ -74,7 +74,7 @@ $NetworkSecurityGroupId
 $Length=$NetworkSecurityGroupId.Length
 $Position=$NetworkSecurityGroupId.LastIndexOf('/') #name starts from +1, using that later
 
-#Substring returns Strings between given range
+#Substring returns Strings between given range. In this case from 131+1 next 3 letters.
 #ID is "/subscriptions/d030343c-fdd7-47cb-a6b7-b7027471025d/resourceGroups/powershell-grp/providers/Microsoft.Network/networkSecurityGroups/NSG"
 $NetworkSecurityGroupName=$NetworkSecurityGroupId.Substring($Position+1,$Length-$Position-1) #-1 to ignore / and get count of 3!
 $NetworkSecurityGroupName

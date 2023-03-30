@@ -58,7 +58,7 @@ Get-AzDisk -ResourceGroupName $ResourceGroupName -Name $OSDisk.Name | Remove-AzD
 
 
 
-#Delete NSG
+#Delete NSG without hardcoding name of NSG
 $ResourceGroupName="powershell-grp"
 $VirtualNetworkName="Vnet"
 

@@ -1,4 +1,4 @@
-#Creating Azure VM
+#Creating Resource group, Vnet, Subnet, NIC, Public IP, NSG and VM
 
 $ResourceGroupName="powershell-grp"
 $Location="North Europe"

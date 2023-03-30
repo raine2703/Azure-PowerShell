@@ -8,8 +8,7 @@ $DesiredVMSize="Standard_B2s"
 $Vm=Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName
 
 #Verifying
-if($Vm.HardwareProfile.VmSize -ne $DesiredVMSize)
-{
+if($Vm.HardwareProfile.VmSize -ne $DesiredVMSize){
     $Vm.HardwareProfile.VmSize=$DesiredVMSize
     $Vm | Update-AzVM
     'The size of the VM has been modified'
@@ -17,3 +16,4 @@ if($Vm.HardwareProfile.VmSize -ne $DesiredVMSize)
 else {
     'The VM is already of the desired size'
 }
+

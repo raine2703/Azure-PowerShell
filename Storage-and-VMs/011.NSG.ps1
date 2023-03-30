@@ -111,3 +111,14 @@ $nic = Get-AzNetworkInterface -ResourceGroupName $ResourceGroupName -Name "Nic1"
 $nic.NetworkSecurityGroup = $nsg
 $nic | Set-AzNetworkInterface 
 
+#Assign NSG to NIC option 2: get NICid from VM
+
+$VmName="appvm"
+$Vm=Get-AzVM -Name $VmName -ResourceGroupName $ResourceGroupName
+
+$NetworkInterfaceId=$Vm.NetworkProfile.NetworkInterfaces[0].Id
+$NetworkInterface= Get-AzNetworkInterface -ResourceId $NetworkInterfaceId
+
+$NetworkInterface.NetworkSecurityGroup=$nsg
+$NetworkInterface | Set-AzNetworkInterface
+

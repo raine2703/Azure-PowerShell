@@ -2,7 +2,7 @@
 
 
 $PublicIPAddressName="public-ip"
-$ResourceGroupName="RG3"
+$ResourceGroupName="powershell-grp"
 $Location="North Europe"
 $NetworkInterfaceName="Nic1" #Assuming its created
 

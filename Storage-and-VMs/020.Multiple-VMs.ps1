@@ -1,4 +1,4 @@
-#Creating Resource group, Vnet, Subnet, NIC, Public IP, NSG, Availability set and VM
+#Creating Mutiple NICs, Public IPs and VMs
 
 $ResourceGroupName="powershell-grp"
 $Location="North Europe"
@@ -30,26 +30,38 @@ $VirtualNetwork=New-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupNam
 
 #Creating NIC
 $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork
-$NetworkInterface=New-AzNetworkInterface -Name $NetworkInterfaceName `
--ResourceGroupName $ResourceGroupName -Location $Location `
--Subnet $Subnet
+$NetworkInterfaces=@()
+for($i=1;$i -le 2;$i++)
+{
+    $NetworkInterfaces+=New-AzNetworkInterface -Name "$NetworkInterfaceName$i" `
+    -ResourceGroupName $ResourceGroupName -Location $Location `
+    -Subnet $Subnet    
+}
+
+
+
 
 
 
 #Creating Public IP
-$PublicIPAddress=New-AzPublicIpAddress -Name $PublicIPAddressName -ResourceGroupName $ResourceGroupName `
--Location $Location -Sku "Standard" -AllocationMethod "Static"
+$PublicIPAddresses=@()
+$IpConfigs=@()
 
-#NIC IP Config Details
-$IpConfig=Get-AzNetworkInterfaceIpConfig -NetworkInterface $NetworkInterface
+for($i=1;$i -le 2;$i++)
+{
+    $PublicIPAddresses+=New-AzPublicIpAddress -Name $PublicIPAddressName$i -ResourceGroupName $ResourceGroupName `
+    -Location $Location -Sku "Standard" -AllocationMethod "Static"
 
-#Assigning PublicIP to NIC
-$NetworkInterface | Set-AzNetworkInterfaceIpConfig -PublicIpAddress $PublicIPAddress `
--Name $IpConfig.Name
+    #NIC IP Config Details
+    $IpConfigs+=Get-AzNetworkInterfaceIpConfig -NetworkInterface $NetworkInterfaces[$i-1]
 
-#Applying changes
-$NetworkInterface | Set-AzNetworkInterface
+    #Assigning PublicIP to NIC
+    $NetworkInterfaces[$i-1] | Set-AzNetworkInterfaceIpConfig -PublicIpAddress $PublicIPAddresses[$i-1] `
+    -Name $IpConfigs[$i-1].Name
 
+    #Applying changes
+    $NetworkInterfaces[$i-1] | Set-AzNetworkInterface
+}
 
 
 #New NSG with rules defined before
@@ -116,12 +128,19 @@ $Password=ConvertTo-SecureString "nsdfn9283yrxnzznklxc@" -AsPlainText -Force
 
 $Credential = New-Object System.Management.Automation.PSCredential ($UserName, $Password);
 
-$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize -AvailabilitySetId $AvailabilitySet.Id
-$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $VmName -Credential $Credential
-$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NetworkInterface.Id
-$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version latest
-$VirtualMachine = Set-AzVMBootDiagnostic -Disable -VM $VirtualMachine
+$VMs=@()
+for($i=1;$i -le 2;$i++)
+{
+$VirtualMachine=New-AzVMConfig -VMName $VMName$i -VMSize $VMSize -AvailabilitySetId $AvailabilitySet.Id
+$VirtualMachine=Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $VmName$i -Credential $Credential
+$VirtualMachine=Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NetworkInterfaces[$i-1].Id
+$VirtualMachine=Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version latest
+$VirtualMachine=Set-AzVMBootDiagnostic -Disable -VM $VirtualMachine
+
+$VMs+="$VMName$i"
 
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
+}
 
+'Created VMs:' + $VMs

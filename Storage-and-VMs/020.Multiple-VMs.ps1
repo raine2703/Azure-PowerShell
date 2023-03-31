@@ -115,7 +115,6 @@ $AvailabilitySet=New-AzAvailabilitySet -Location $Location -Name $AvailabilitySe
 
 
 #Creating Virtual Machine
-
 $VmName="appvm"
 $VMSize = "Standard_DS2_v2"
 

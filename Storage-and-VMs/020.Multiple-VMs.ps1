@@ -40,9 +40,6 @@ for($i=1;$i -le 2;$i++)
 
 
 
-
-
-
 #Creating Public IP
 $PublicIPAddresses=@()
 $IpConfigs=@()
@@ -144,3 +141,4 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 }
 
 'Created VMs:' + $VMs
+

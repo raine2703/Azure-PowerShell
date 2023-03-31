@@ -22,4 +22,3 @@ $NetworkInterface
 
 #Removing NIC
 Remove-AzNetworkInterface -name $NetworkInterfaceName -ResourceGroupName $ResourceGroupName -Force
-

@@ -25,4 +25,3 @@ if($Statuses[1].Code -eq "PowerState/deallocated"){
 else {
     'VM already running!'
 }
-

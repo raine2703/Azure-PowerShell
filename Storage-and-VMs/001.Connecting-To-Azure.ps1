@@ -10,4 +10,3 @@ $Credential=New-Object -TypeName System.Management.Automation.PSCredential `
 $TenandID="c20a49b8-2914-4624-a197-1e882bd3abf4"
 
 Connect-AzAccount -ServicePrincipal -Credential $Credential -Tenant $TenandID
-

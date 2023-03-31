@@ -12,4 +12,3 @@ $Vm | Add-AzVMDataDisk -Name $DiskName -DiskSizeInGB 16 -CreateOption Empty -Lun
 
 # Update Vm
 $Vm | Update-AzVM
-

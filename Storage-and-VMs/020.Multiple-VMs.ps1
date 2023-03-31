@@ -142,4 +142,3 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 }
 
 'Created VMs:' + $VMs
-

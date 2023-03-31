@@ -47,4 +47,3 @@ $virtualNetwork.subnets.name
 #Delete Vnet
 Remove-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName -Force
 $virtualNetwork.name
-

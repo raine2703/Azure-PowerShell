@@ -33,4 +33,3 @@ if(Get-AzStorageAccount -name $AccountName -ResourceGroupName $ResourceGroupName
 }
 
 Get-AzStorageAccount
-

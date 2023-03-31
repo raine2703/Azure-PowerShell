@@ -30,4 +30,3 @@ Update-AzVM -ResourceGroupName $ResourceGroupName -VM $Vm
 
 #Finally starting VM
 Start-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName
-

@@ -121,4 +121,3 @@ $NetworkInterface= Get-AzNetworkInterface -ResourceId $NetworkInterfaceId
 
 $NetworkInterface.NetworkSecurityGroup=$nsg
 $NetworkInterface | Set-AzNetworkInterface
-

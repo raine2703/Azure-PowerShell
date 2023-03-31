@@ -16,4 +16,3 @@ if($Vm.HardwareProfile.VmSize -ne $DesiredVMSize){
 else {
     'The VM is already of the desired size'
 }
-

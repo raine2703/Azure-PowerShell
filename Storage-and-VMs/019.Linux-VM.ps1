@@ -115,4 +115,3 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'Canoni
 $VirtualMachine = Set-AzVMBootDiagnostic -Disable -VM $VirtualMachine
 
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine -GenerateSshKey -SshKeyName "Linuxkey"
-

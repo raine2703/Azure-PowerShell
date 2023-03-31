@@ -87,4 +87,3 @@ $VirtualNetwork | Set-AzVirtualNetwork
 
 #Remove NSG
 Remove-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Name $NetworkSecurityGroupName -Force
-

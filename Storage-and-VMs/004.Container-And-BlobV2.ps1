@@ -40,4 +40,3 @@ Get-AzStorageBlob -Context $StorageAccount.Context -container $ContainerName
 
 #Delete Blob
 Remove-AzStorageBlob -Container $containername -Blob $BlobObject.ObjectName -context $StorageAccount.Context
-

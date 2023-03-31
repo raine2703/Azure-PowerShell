@@ -59,4 +59,3 @@ $ContainerList
 foreach ($x in $ContainerList) {
     Remove-AzStorageContainer -name $x.name -context $ctx
 }
-

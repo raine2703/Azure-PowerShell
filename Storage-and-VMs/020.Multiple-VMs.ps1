@@ -134,6 +134,7 @@ $VirtualMachine=Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NetworkInterfa
 $VirtualMachine=Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version latest
 $VirtualMachine=Set-AzVMBootDiagnostic -Disable -VM $VirtualMachine
 
+#Saving VM names in to array for later use
 $VMs+="$VMName$i"
 
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine

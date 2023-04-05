@@ -29,7 +29,7 @@ Add-AzStorageAccountNetworkRule -ResourceGroupName $ResourceGroupName `
 -AccountName $AccountName -IPAddressOrRange $IPAddress.Content
 
 
-#CASE2 - Allowing Connectiong from VMs in Azure Vnet/Subnet
+#CASE2 - Allowing connection from VMs in Azure Vnet/Subnet
 #Creating Vnet for test purposes
 $VirtualNetworkName="Vnet"
 $VirtualNetworkAddressSpace="10.0.0.0/16"

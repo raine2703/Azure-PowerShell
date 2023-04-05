@@ -23,11 +23,10 @@ $IPAddress=Invoke-WebRequest -uri "https://ifconfig.me/ip" | Select-Object Conte
 $IPAddress
 
 
-#CASE1 - Allowing my PC to connect to Storrage accout by adding new rule to Firewall
+#CASE1 - Allowing my PC to connect to Storage accout by adding new rule to Firewall
 #Test by Uploading/Accessing Blow
 Add-AzStorageAccountNetworkRule -ResourceGroupName $ResourceGroupName `
 -AccountName $AccountName -IPAddressOrRange $IPAddress.Content
-
 
 
 #CASE2 - Allowing Connectiong from VMs in Azure Vnet/Subnet

@@ -1,4 +1,5 @@
 #Creating Resource group, Vnet, Subnet, NIC, Public IP, NSG, Availability set and VM
+#Credentials used from KeyVault. Powershell identity is granted Get access policy to Secrets
 
 $ResourceGroupName="powershell-grp"
 $Location="North Europe"
@@ -106,15 +107,31 @@ $AvailabilitySet=New-AzAvailabilitySet -Location $Location -Name $AvailabilitySe
 
 
 #Creating Virtual Machine
-
 $VmName="appvm"
-$VMSize = "Standard_DS2_v2"
+$VMSize="Standard_DS2_v2"
+$KeyVaultName="rkv2703x"
 
 $Location ="North Europe"
 $UserName="usera"
-$Password=ConvertTo-SecureString "nsdfn9283yrxnzznklxc@" -AsPlainText -Force
 
-$Credential = New-Object System.Management.Automation.PSCredential ($UserName, $Password);
+<#
+Vault Already created! But Could use this:
+
+New-AzKeyVault -Name $KeyVaultName -ResourceGroupName $ResourceGroupName `
+-Location $Location -SoftDeleteRetentionInDays 7
+
+# Access to Powershell application:
+
+$ObjectID=""
+Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ObjectId $ObjectID `
+-PermissionsToSecrets Get
+#>
+
+$Password=Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name "vmpassword2" -AsPlainText
+$PasswordSecure=ConvertTo-SecureString -String $Password -AsPlainText -Force
+
+
+$Credential = New-Object System.Management.Automation.PSCredential ($UserName, $PasswordSecure);
 
 $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize -AvailabilitySetId $AvailabilitySet.Id
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $VmName -Credential $Credential

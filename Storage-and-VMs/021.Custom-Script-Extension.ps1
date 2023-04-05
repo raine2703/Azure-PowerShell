@@ -2,7 +2,6 @@
 #Can be added to Windows-VM.ps1 file
 
 
-
 #Creating Storage account for storing the IIS Config file
 $AccountName = "rnstoragerandom270356"
 $AccountKind="StorageV2"
@@ -12,8 +11,6 @@ $Location = "North Europe"
 
 $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $AccountName `
 -Location $Location -Kind $AccountKind -SkuName $AccountSKU
-
-
 
 
 #Creating Container
@@ -29,7 +26,6 @@ $BlobObject=@{
 
 $Blob=Set-AzStorageBlobContent -Context $StorageAccount.Context -Container $ContainerName `
 -File $BlobObject.FileLocation -Blob $BlobObject.ObjectName
-
 
 
 #Applying Custom Script extension to VM

@@ -1,5 +1,5 @@
 #Idea how to create Azure Bastion
-#Can be added to Windows-VM.ps1 
+#Can be added to Windows-VM.ps1 file
 
 
 #First is Bastion Subnet
@@ -9,12 +9,10 @@ $BastionSubnet=New-AzVirtualNetworkSubnetConfig -Name $BastionSubnetName `
 -AddressPrefix $BastionSubnetAddressSpace
 
 
-
 #Then Vnet with BastionSubnet
 $VirtualNetwork = New-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName `
 -Location $Location -AddressPrefix $VirtualNetworkAddressSpace `
 -Subnet $Subnet,$BastionSubnet
-
 
 
 #New Public IP Address 
@@ -23,7 +21,6 @@ $PublicIPAddress=New-AzPublicIpAddress -Name $PublicIPAddressName `
 -ResourceGroupName $ResourceGroupName -Location $Location `
 -Sku "Standard" -AllocationMethod "Static"
  
-
 
 #Finally Azure Bastion Host
 $BastionName="app-bastion"

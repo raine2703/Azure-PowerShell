@@ -1,1 +1,1 @@
-sample text
+Simple text file to upload to Azure Storage.

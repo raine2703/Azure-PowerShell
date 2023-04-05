@@ -1,4 +1,4 @@
-#Creating Resource group, Vnet, Subnet, NIC, Public IP, NSG, Availability set and VM
+#Creating Resource group, Vnet, Subnet, NIC, Public IP, NSG, Availability set, VM, Custom Script extension.
 
 $ResourceGroupName="powershell-grp"
 $Location="North Europe"

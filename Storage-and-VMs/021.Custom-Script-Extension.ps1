@@ -1,5 +1,5 @@
 #Idea how to Create Custom Script Extension for VM from Script in Azure Storage Account.
-#Can be aded to Windows-VM.ps1 file
+#Can be added to Windows-VM.ps1 file
 
 
 

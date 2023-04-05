@@ -1,5 +1,5 @@
 #Idea how to create Azure Bastion
-#Can Be added to Windows-VM.ps1 
+#Can be added to Windows-VM.ps1 
 
 
 #First is Bastion Subnet

@@ -20,7 +20,7 @@ New-AzStorageContainer -Name $ContainerName -Context $StorageAccount.Context `
 -Permission Blob
 
 $BlobObject=@{
-    FileLocation="IIS_Config.ps1"
+    FileLocation="C:\Users\raitisn\Desktop\psw-work\Storage-and-VMs\IIS_Config.ps1"
     ObjectName ="IIS_Config.ps1"
 }
 

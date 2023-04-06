@@ -2,13 +2,13 @@
 #Defining Storage Context as variable
 
 #Creating Resource Group
-$ResourceGroupName="RG3"
+$ResourceGroupName="RG5"
 $Location="North Europe"
 $RG=New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
 
 
 #Creating Storage Account
-$AccountName="rnstorage270355x"
+$AccountName="rnstorage2703552x"
 $AccountKind="StorageV2"
 $AccountSKU="Standard_LRS"
 $Location="North Europe"
@@ -31,7 +31,7 @@ Remove-AzStorageContainer -name $containername -context $ctx
 #Uploading File to container
 $ContainerName="data2"
 $BlobObject=@{
-    FileLocation="sample.txt"
+    FileLocation="C:\Users\raitisn\Desktop\psw-work\Storage-and-VMs\sample.txt"
     ObjectName ="sample.txt"
 }
 

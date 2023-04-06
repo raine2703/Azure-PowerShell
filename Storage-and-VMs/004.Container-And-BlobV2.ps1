@@ -28,7 +28,7 @@ Get-AzStorageContainer -Context $StorageAccount.Context
 
 #Uploading Blob
 $BlobObject=@{
-    FileLocation="sample.txt"
+    FileLocation="C:\Users\raitisn\Desktop\psw-work\Storage-and-VMs\sample.txt"
     ObjectName ="sample.txt"
 }
 

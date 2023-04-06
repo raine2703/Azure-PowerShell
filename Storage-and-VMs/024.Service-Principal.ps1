@@ -10,7 +10,7 @@ Disable-AzContextAutosave
 Connect-AzAccount
 
 #Creating Service principal
-$ServicePrincipalName="random-principal"
+$ServicePrincipalName="random-principal2"
 $ServicePrincipal=New-AzADServicePrincipal -DisplayName $ServicePrincipalName
 
 #Getting service principal secret value

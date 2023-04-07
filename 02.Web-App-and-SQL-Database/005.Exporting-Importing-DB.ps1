@@ -1,6 +1,6 @@
 #Exporting Azure SQL DB to Azure Storage. 
 #Creating new Azure SQL server with Database. 
-#Importing Exported data from Storage account to new DB!
+#Importing Exported data from Storage account to new DB.
 
 <#
 
@@ -43,7 +43,7 @@ $StorageAccountKey=(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupNam
 $StorageAccountKeyValue=$StorageAccountKey.Value
 
 #Exporting Database to Azure Storage Account Container
-#"Allow Azure Resources to access this server" must be enables at SQL Server Networking Settings!!!
+# "Allow Azure Resources to access this server" must be enables at SQL Server Networking Settings!!!
 $DatabaseExport=New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName `
 -ServerName $SourceDatabaseServer -DatabaseName $SourceDatabaseName `
 -AdministratorLogin $UserName -AdministratorLoginPassword $PasswordSecure `
@@ -88,8 +88,8 @@ New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName `
 -StartIpAddress $IPAddress.Content -EndIpAddress $IPAddress.Content
 
 
-#Importin exported DB to newly created SQL Server and Database
-#"Allow Azure Resources to access this server" must be enables at new SQL Server Networking Settings!!!
+#Importing exported DB to newly created SQL Server and Database
+# "Allow Azure Resources to access this server" must be enables at new SQL Server Networking Settings!!!
 $DatabaseImport=New-AzSqlDatabaseImport -DatabaseName $TargetDatabaseName `
 -ServiceObjectiveName "S3" -Edition "Standard" -DatabaseMaxSizeBytes 268435456000 `
 -AdministratorLogin $TargetAdminUser -AdministratorLoginPassword $TargetPasswordSecure `

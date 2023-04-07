@@ -55,7 +55,6 @@ Switch-AzWebAppSlot -Name $WebAppName -ResourceGroupName $ResourceGroupName `
 -SourceSlotName $SlotName -DestinationSlotName $TargetSlot
 
 
-
 <#
 
 Github Integration
@@ -71,8 +70,6 @@ Set-AzResource -ResourceGroupName $ResourceGroupName `
 -ResourceName $WebAppName/web -ApiVersion 2015-08-01 -Force
 
 #>
-
-
 
 <#
 

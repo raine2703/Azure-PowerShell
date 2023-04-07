@@ -22,7 +22,7 @@ New-AzSQLServer -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
 
 
 #Deploying Database
-$DatabaseName="db01"
+$DatabaseName="db03"
 New-AzSqlDatabase -ResourceGroupName $ResourceGroupName -DatabaseName $DatabaseName `
 -RequestedServiceObjectiveName "S0" -ServerName $ServerName
 
@@ -47,5 +47,5 @@ Get-AzSqlServer -ResourceGroupName $ResourceGroupName | format-table
 #Install-Module -Name SqlServer
 
 #Running SQL comands to Azure SQL DB
-Invoke-SqlCmd -ServerInstance "dbserver5f9f51.database.windows.net" -Database "db01" `
+Invoke-SqlCmd -ServerInstance "dbserver5f9f51.database.windows.net" -Database "db03" `
 -Username $AdminUser -Password $AdminPassword -InputFile $ScriptFile

@@ -1,4 +1,4 @@
-CREATE TABLE Table01
+CREATE TABLE Table03
 (
    CourseID int,
    CourseName varchar(1000),
@@ -6,7 +6,7 @@ CREATE TABLE Table01
 )
 
 
-INSERT INTO Course(CourseID,CourseName,Rating) VALUES
+INSERT INTO Table03(CourseID,CourseName,Rating) VALUES
 (1,'AZ-204 Developing Azure solutions',4.5),
 (2,'AZ-303 Architecting Azure solutions',4.6),
 (3,'DP-203 Azure Data Engineer',4.7)

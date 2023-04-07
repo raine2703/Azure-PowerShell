@@ -31,7 +31,7 @@ Remove-AzStorageContainer -name $containername -context $ctx
 #Uploading File to container
 $ContainerName="data2"
 $BlobObject=@{
-    FileLocation="C:\Users\raitisn\Desktop\psw-work\Storage-and-VMs\sample.txt"
+    FileLocation="C:\Users\raitisn\Desktop\Azure-PowerShell\Storage-and-VMs\sample.txt"
     ObjectName ="sample.txt"
 }
 

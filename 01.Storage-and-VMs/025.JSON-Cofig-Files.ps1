@@ -10,7 +10,7 @@ param(
 #Or simply $Environment="Production"
 
 #Getting JSON file object values
-$Object=Get-Content -Raw -Path "C:\Users\raitisn\Desktop\psw-work\Storage-and-VMs\Config.json" | ConvertFrom-Json
+$Object=Get-Content -Raw -Path "C:\Users\raitisn\Desktop\Azure-PowerShell\Storage-and-VMs\Config.json" | ConvertFrom-Json
 
 #Clearing all variables
 $VirtualNetworkName=$null

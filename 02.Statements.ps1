@@ -1,5 +1,4 @@
-
-# If else statement
+# If, else, for, for each statements
 
 $NumberOfVideos = 5
 
@@ -9,8 +8,8 @@ if($NumberOfVideos -ge 20) {
     "Less than 20"
 }
 
-#While statement
 
+#While statement
 $i=1
 while ($i -le 10) {
     $i
@@ -19,10 +18,10 @@ while ($i -le 10) {
 
  
 #for statement
-
 for($i=1; $i -le 10; ++$i){
     $i
 }
+
 
 #for each
 $coursevideos = 'abc','def','ghj'
@@ -30,7 +29,6 @@ $coursevideos = 'abc','def','ghj'
 foreach ($x in $coursevideos) {
     $x + ' text'
 }
-
 
 
 $CourseList=@(

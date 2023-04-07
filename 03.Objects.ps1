@@ -1,4 +1,4 @@
-#Creating custom object
+#Creating custom Objects
 
 $Course=[PSCustomObject]@{
     ID = 1

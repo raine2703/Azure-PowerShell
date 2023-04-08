@@ -18,7 +18,7 @@ New-AzStorageContainer -Name $ContainerName -Context $StorageAccount.Context `
 -Permission Blob
 
 $BlobObject=@{
-    FileLocation="C:\Users\raitisn\Desktop\Azure-PowerShell\03.Azure-Networking.ps1\01.Load-Balancer\IIS_Config.ps1"
+    FileLocation="C:\Users\raitisn\Desktop\Azure-PowerShell\03.Azure-Networking\01.Load-Balancer\IIS_Config.ps1"
     ObjectName ="IIS_Config.ps1"
 }
 

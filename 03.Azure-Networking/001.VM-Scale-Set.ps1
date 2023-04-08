@@ -39,6 +39,7 @@ Set-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwo
 $VirtualNetwork | Set-AzVirtualNetwork
 
 
+
 #Creating Azure Load Balancer
 $PublicIPDetails=@{
     Name='lb01-publicip'
@@ -103,6 +104,7 @@ $Location ="North Europe"
 $UserName="rn270s22"
 $Password="7dek36%l**"
 
+
 #Getting values
 $LoadBalancer=Get-AzLoadBalancer -ResourceGroupName $ResourceGroupName `
 -Name $LoadBalancerName
@@ -117,6 +119,7 @@ $VirtualNetwork=Get-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupNam
 $VmssIPConfig=New-AzVmssIpConfig -Name "IPConfigScaleSet" `
 -SubnetId $VirtualNetwork.Subnets[0].Id -Primary `
 -LoadBalancerBackendAddressPoolsId $BackendAddressPool.Id
+
 
 #Configuring VMSS
 $VmssConfig=New-AzVmssConfig -SkuName $VMSize -Location $Location `
@@ -135,6 +138,7 @@ $VmssConfig=Add-AzVmssNetworkInterfaceConfiguration -Name "NetworkConfig" `
 
 New-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VmssConfig `
 -Name $ScaleSetName
+
 
 
 #Creating Storage account for storing the IIS Config file

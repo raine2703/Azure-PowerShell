@@ -49,3 +49,7 @@ Get-AzSqlServer -ResourceGroupName $ResourceGroupName | format-table
 #Running SQL comands to Azure SQL DB
 Invoke-SqlCmd -ServerInstance "dbserver5f9f51.database.windows.net" -Database "db03" `
 -Username $AdminUser -Password $AdminPassword -InputFile $ScriptFile
+
+
+
+#Change Service Tier for database

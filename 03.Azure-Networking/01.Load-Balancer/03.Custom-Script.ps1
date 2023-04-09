@@ -1,6 +1,5 @@
 #Custom Script to install IIS on all backend VMs
 
-
 #Creating Storage account for storing the IIS Config file
 $AccountName = "rnstoragerandom270356"
 $AccountKind="StorageV2"

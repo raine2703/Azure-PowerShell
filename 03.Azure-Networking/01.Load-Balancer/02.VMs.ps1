@@ -1,6 +1,5 @@
 #Creating 1-4 virtual machines. 
 
-
 param(
     [Parameter(Mandatory=$true)]
     [ValidateNotNullOrEmpty()]

@@ -1,7 +1,6 @@
 #Creating VMSS behind Azure Load balancer. IIS Installed to verify Load balancing.
 #Manual VM count Scaling
 
-
 $ResourceGroupName ="RG9"
 $Location="North Europe"
 $VirtualNetworkName="Vnet"

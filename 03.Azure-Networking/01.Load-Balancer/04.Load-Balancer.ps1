@@ -2,7 +2,6 @@
 #Use $PublicIP to access one of VMs in Backend Pool
 #Note that VMs do not have public IP
 
-
 $ResourceGroupName="Load-Balancer-RG"
 $Location = "North Europe"
 

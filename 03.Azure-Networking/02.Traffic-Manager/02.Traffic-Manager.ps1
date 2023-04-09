@@ -1,7 +1,6 @@
 #Creating Traffic Manager with Priority routing
 #Provides Load balancing between Regions
 
-
 $TrafficManagerProfileName="traffic-mgrrn2745"
 $ResourceGroupName ="RG11"
 

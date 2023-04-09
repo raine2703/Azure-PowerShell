@@ -1,4 +1,5 @@
 #Creating Storage account for storing the IIS Config file
+
 $AccountName = "rnstoragerandom270356"
 $AccountKind="StorageV2"
 $AccountSKU="Standard_LRS"

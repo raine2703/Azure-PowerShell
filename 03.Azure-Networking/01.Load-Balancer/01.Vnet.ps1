@@ -1,6 +1,5 @@
 #Creating VNet
 
-
 $ResourceGroupName ="Load-Balancer-RG"
 $Location="North Europe"
 

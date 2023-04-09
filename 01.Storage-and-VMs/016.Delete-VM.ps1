@@ -1,6 +1,5 @@
 #Delete VM and its resources
 
-
 $VmName="appvm"
 $ResourceGroupName="powershell-grp"
 

@@ -8,7 +8,6 @@ Exporting Azure SQL database to Azure Storage Account Container.
 
 #>
 
-
 $ResourceGroupName = "RG7"
 $AccountKind="StorageV2"
 $AccountSKU="Standard_LRS"

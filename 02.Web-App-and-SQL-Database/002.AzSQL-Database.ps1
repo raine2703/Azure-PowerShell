@@ -1,6 +1,5 @@
 #Creating Azure SQL Server
 
-
 $ResourceGroupName="RG7"
 $Location="North Europe"
 #New-Guid generates random nuber. Converting it to String and appending first 6 characters for unique Servername

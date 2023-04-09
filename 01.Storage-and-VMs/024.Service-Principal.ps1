@@ -1,10 +1,8 @@
 #Creating Service principal and Assigning/Removing roles for it.
 #As Service principal secret value is displayed only once when created saving it in Key Vault for reusability.
 
-
 #Turn off autosaving Azure credentials. Your login information will be forgotten the next time you open a PowerShell window
 Disable-AzContextAutosave
-
 
 #Connecting with my Admin account
 Connect-AzAccount

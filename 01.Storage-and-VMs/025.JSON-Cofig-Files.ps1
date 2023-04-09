@@ -1,6 +1,5 @@
 #Idea how to work with JSON config files
 
-
 #Define the Environment as input value
 param(
 [Parameter(Mandatory=$true)]

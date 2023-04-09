@@ -1,7 +1,6 @@
 #Idea how to create Azure Bastion
 #Can be added to Windows-VM.ps1 file
 
-
 #First is Bastion Subnet
 $BastionSubnetName="AzureBastionSubnet"
 $BastionSubnetAddressSpace="10.0.1.0/24"

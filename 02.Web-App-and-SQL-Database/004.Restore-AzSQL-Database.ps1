@@ -1,6 +1,5 @@
 #Restoring Azure Database on the same Azure SQL server
 
-
 $ResourceGroupName="RG7"
 $ServerName="dbserver5f9f51"
 $SourceDatabaseName="db01"

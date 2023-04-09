@@ -1,6 +1,5 @@
 #Creating Public IP Address and assigning it to NIC
 
-
 $PublicIPAddressName="public-ip"
 $ResourceGroupName="powershell-grp"
 $Location="North Europe"

@@ -1,6 +1,5 @@
 #Creating Azure Web App
 
-
 $ResourceGroupName="RG3"
 $Location="North Europe"
 $AppServicePlanName="AppServicePlan"

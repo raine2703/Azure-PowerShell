@@ -1,7 +1,6 @@
 #Idea how to Create Custom Script Extension for VM from Script in Azure Storage Account.
 #Can be added to Windows-VM.ps1 file
 
-
 #Creating Storage account for storing the IIS Config file
 $AccountName = "rnstoragerandom270356"
 $AccountKind="StorageV2"

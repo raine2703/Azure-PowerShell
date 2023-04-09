@@ -1,0 +1,1 @@
+use this https://learn.microsoft.com/en-us/azure/virtual-network/tutorial-connect-virtual-networks-powershell

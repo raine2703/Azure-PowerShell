@@ -19,7 +19,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 $virtualNetwork1 | Set-AzVirtualNetwork
 
 
-#Creating secind Vnet
+#Creating second VNet
 $virtualNetwork2 = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `

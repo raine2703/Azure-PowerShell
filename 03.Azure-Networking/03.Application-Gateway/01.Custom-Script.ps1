@@ -11,7 +11,6 @@ New-AzResourceGroup -name $ResourceGroupName -Location $Location
 $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $AccountName `
 -Location $Location -Kind $AccountKind -SkuName $AccountSKU
 
-#Creating Container
 $ContainerName="data"
 
 New-AzStorageContainer -Name $ContainerName -Context $StorageAccount.Context `

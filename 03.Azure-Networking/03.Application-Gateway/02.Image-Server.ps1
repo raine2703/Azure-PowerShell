@@ -1,3 +1,5 @@
+#Creating first server - ImageVM
+
 $ResourceGroupName = "RG7"
 $Location = "North Europe"
 $VirtualNetworkName ="VNet1"
@@ -10,23 +12,23 @@ $NSGName="NSG"
 
 New-AzResourceGroup -name $ResourceGroupName -Location $Location
 
-$Subnet=New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressSpace
 
+#Creating Vnet with Subnet
+$Subnet=New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressSpace
 New-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName `
 -Location $Location -AddressPrefix $VirtualNetworkAddressSpace -Subnet $Subnet
 
 
-
 #Creating NIC
 $VirtualNetwork=Get-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName
-
 $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork
 
 $NetworkInterface=New-AzNetworkInterface -Name $NetworkInterfaceName `
 -ResourceGroupName $ResourceGroupName -Location $Location `
 -Subnet $Subnet
 
-#New NSG with rules defined before
+
+#New NSG 
 $rule1=New-AzNetworkSecurityRuleConfig `
     -Name "web-rule" `
     -Description "Allow HTTP" `
@@ -57,13 +59,13 @@ Set-AzVirtualNetworkSubnetConfig `
 $VirtualNetwork | Set-AzVirtualNetwork
 
 
+#Creating VM
 $VmName="ImageVM"
 $VMSize="Standard_DS2_v2"
 $KeyVaultName="rkv2703x"
-
-$Location ="North Europe"
 $UserName="usera"
 
+#Credentials used from KeyVault
 $Password=Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name "vmpassword2" -AsPlainText
 $PasswordSecure=ConvertTo-SecureString -String $Password -AsPlainText -Force
 
@@ -78,17 +80,10 @@ $VirtualMachine = Set-AzVMBootDiagnostic -Disable -VM $VirtualMachine
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
 
-
-
-
-
+#Applying Custom Script extension to VM
 $AccountName = "rnstoragerandom270356x"
 $CuctomScriptStorage="CustomScripts"
 
-
-
-
-#Applying Custom Script extension to VM
 $blobUri=@($Blob.ICloudBlob.Uri.AbsoluteUri)
 $StorageAccountKey=(Get-AzStorageAccountKey -ResourceGroupName $CuctomScriptStorage `
 -AccountName $AccountName) | Where-Object {$_.KeyName -eq "key1"}

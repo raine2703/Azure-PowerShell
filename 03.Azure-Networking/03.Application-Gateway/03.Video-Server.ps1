@@ -1,8 +1,8 @@
+#Creating second server - VideoVM
 
 $NetworkInterfaceName="Nic2"
 
-
-#Creating NIC
+#Creating NIC2
 $VirtualNetwork=Get-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName
 
 $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $VirtualNetwork
@@ -12,6 +12,7 @@ $NetworkInterface=New-AzNetworkInterface -Name $NetworkInterfaceName `
 -Subnet $Subnet
 
 
+#Creating VideoVM, Adding to same Subnet as ImageVM
 $VmName="VideoVM"
 $VMSize="Standard_DS2_v2"
 $KeyVaultName="rkv2703x"
@@ -19,6 +20,7 @@ $KeyVaultName="rkv2703x"
 $Location ="North Europe"
 $UserName="usera"
 
+#Credentials used from KeyVault
 $Password=Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name "vmpassword2" -AsPlainText
 $PasswordSecure=ConvertTo-SecureString -String $Password -AsPlainText -Force
 
@@ -33,14 +35,11 @@ $VirtualMachine = Set-AzVMBootDiagnostic -Disable -VM $VirtualMachine
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
 
-
+#Applying Custom Script extension to VM
 $AccountName = "rnstoragerandom270356x"
 $CuctomScriptStorage="CustomScripts"
 
 
-
-
-#Applying Custom Script extension to VM
 $blobUri=@($Blob2.ICloudBlob.Uri.AbsoluteUri)
 $StorageAccountKey=(Get-AzStorageAccountKey -ResourceGroupName $CuctomScriptStorage `
 -AccountName $AccountName) | Where-Object {$_.KeyName -eq "key1"}

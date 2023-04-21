@@ -1,5 +1,5 @@
 #Creating Application Gateway Load balancer. Uses Layer 7 load balancing.
-#http://gateway-ip/images/default.html will route to images server backen pool
+#http://gateway-ip/images/default.html will route to images server backend pool
 #http://gateway-ip/videos/default.html will route to vidoes server backend pool
 
 

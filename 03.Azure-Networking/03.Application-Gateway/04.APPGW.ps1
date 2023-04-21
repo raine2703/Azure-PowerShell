@@ -27,7 +27,6 @@ $PublicIPDetails=@{
 $PublicIP=New-AzPublicIpAddress @PublicIPDetails
 
 
-
 #Associating the gateway to the subnet
 $VirtualNetwork=Get-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName
 

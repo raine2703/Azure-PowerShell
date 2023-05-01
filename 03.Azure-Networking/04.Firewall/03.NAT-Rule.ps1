@@ -1,6 +1,5 @@
 #Creating NAT rule. RDP to firewall-ip:4000 will connect to  VM private IP 10.0.0.4:3839
 
-
 $FirewallPolicyName="firewall-policy"
 $ResourceGroupName="RG7"
 

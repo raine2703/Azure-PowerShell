@@ -1,5 +1,4 @@
 #Routing all traffic from VMs Vnet/Subnet true Azure Firewall. By Default all traffic will be denied and accesing intertnet wont work.
- 
 
 # We have to first create a new route table
 $ResourceGroupName="RG7"

@@ -1,6 +1,5 @@
 #Creating VM
 
-
 $ResourceGroupName = "RG7"
 $Location = "North Europe"
 $VirtualNetworkName ="VNet1"

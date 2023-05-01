@@ -1,6 +1,5 @@
 #Allowing traffic from VM to www.google.com via Application rule
 
-
 $FirewallPolicyName="firewall-policy"
 $ResourceGroupName="RG7"
 

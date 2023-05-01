@@ -4,9 +4,11 @@
 $ResourceGroupName="RG7"
 $Location="North Europe"
 
+
 #Creating Route table
 $RouteTable=New-AzRouteTable -Name "FirewallRouteTable" -ResourceGroupName $ResourceGroupName `
 -Location $Location -DisableBgpRoutePropagation
+
 
 #Adding route. All traffic from subnet routed true firewall
 $FirewallName="app-firewall"
@@ -16,6 +18,7 @@ $FirewallPrivateIPAddress=$Firewall.IpConfigurations[0].PrivateIPAddress
 Add-AzRouteConfig -Name "FirewallRoute" -RouteTable $RouteTable `
 -AddressPrefix 0.0.0.0/0 -NextHopType "VirtualAppliance" `
 -NextHopIpAddress $FirewallPrivateIPAddress | Set-AzRouteTable
+
 
 #Assigning route table to SubnetA
 $VirtualNetworkName="Vnet1"

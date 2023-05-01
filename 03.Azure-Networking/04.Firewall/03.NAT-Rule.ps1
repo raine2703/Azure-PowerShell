@@ -11,6 +11,7 @@ $PublicIPDetails=@{
     ResourceGroupName=$ResourceGroupName
 }
 
+
 #Creating NATCollectionGroup
 $CollectionGroup = New-AzFirewallPolicyRuleCollectionGroup -Name "NATCollectionGroup" -Priority 200 `
 -ResourceGroupName $ResourceGroupName -FirewallPolicyName $FirewallPolicyName
@@ -21,20 +22,24 @@ $MyIPAddress=Invoke-WebRequest -uri "https://ifconfig.me/ip" | Select-Object Con
 
 $FirewallPublicIPAddress=(Get-AzPublicIpAddress -Name $PublicIPDetails.Name).IpAddress
 
+
 #Getting VM privatge IP address
 $VMNetworkProfile=(Get-AzVm -Name $VmName).NetworkProfile
 $NetworkInterface=Get-AzNetworkInterface -ResourceId $VMNetworkProfile.NetworkInterfaces[0].Id
 $VMPrivateIPAddress=$NetworkInterface.IpConfigurations[0].PrivateIpAddress
+
 
 #Adding rule to allow connection from my PC to firewall public ip address port 4000
 $Rule1=New-AzFirewallPolicyNatRule -Name $NATRuleName -Protocol "TCP" -SourceAddress $MyIPAddress.Content `
 -DestinationAddress $FirewallPublicIPAddress -DestinationPort "4000" `
 -TranslatedAddress $VMPrivateIPAddress -TranslatedPort "3389"
 
+
 #Linking Collection with Rule1
 $Collection=New-AzFirewallPolicyNatRuleCollection -Name "CollectionA" -Priority 1000 -Rule $Rule1 `
 -ActionType "Dnat"
  
+
 #Updating Collection Group
 $CollectionGroup = Get-AzFirewallPolicyRuleCollectionGroup -Name "NATCollectionGroup" `
 -ResourceGroupName $ResourceGroupName -AzureFirewallPolicyName $FirewallPolicyName

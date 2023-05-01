@@ -1,6 +1,5 @@
 #Creating Azure Firewall
 
-
 $VirtualNetworkName="Vnet1"
 $ResourceGroupName="RG7"
 $BastionSubnetName="AzureFirewallSubnet"
@@ -15,6 +14,7 @@ Add-AzVirtualNetworkSubnetConfig -Name $BastionSubnetName `
 
 $virtualNetwork | Set-AzVirtualNetwork
 
+
 #Firewall Public IP address
 $PublicIPDetails=@{
     Name='firewall-ip'
@@ -26,8 +26,10 @@ $PublicIPDetails=@{
 
 $FirewallPublicIP=New-AzPublicIpAddress @PublicIPDetails
 
+
 #Updating value
 $VirtualNetwork=Get-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName
+
 
 #Creating Firewall policy to manage rules
 $FirewallPolicyName="firewall-policy"
@@ -35,6 +37,7 @@ $FirewallPolicy=New-AzFirewallPolicy -Name $FirewallPolicyName -ResourceGroupNam
 -Location $Location
 
 $FirewallPublicIP=Get-AzPublicIpAddress -Name $PublicIPDetails.Name
+
 
 #Creating Azure Firewall
 $AzureFirewall = New-AzFirewall -Name $FirewallName -ResourceGroupName $ResourceGroupName `

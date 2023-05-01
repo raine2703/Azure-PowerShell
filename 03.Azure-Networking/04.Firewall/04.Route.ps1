@@ -1,4 +1,4 @@
-#Routing all traffic from VMs Vnet/Subnet true Azure Firewall. By Default all traffic will be denied and accesing intertnet wont work.
+#Routing all traffic from VMs Vnet/Subnet true Azure Firewall. By default all traffic will be denied and surf out won't work.
 
 $ResourceGroupName="RG7"
 $Location="North Europe"

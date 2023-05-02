@@ -1,7 +1,7 @@
 #Creating Resource group, Vnet, Subnet, NIC, Public IP, NSG, Availability set and VM
 #Credentials used from KeyVault. Powershell identity is granted Get access policy to Secrets
 
-$ResourceGroupName="powershell-grp"
+$ResourceGroupName="RG8"
 $Location="North Europe"
 
 $VirtualNetworkName="Vnet"
@@ -107,7 +107,7 @@ $AvailabilitySet=New-AzAvailabilitySet -Location $Location -Name $AvailabilitySe
 
 
 #Creating Virtual Machine
-$VmName="appvm"
+$VmName="VM8"
 $VMSize="Standard_DS2_v2"
 $KeyVaultName="rkv2703x"
 

@@ -14,6 +14,7 @@ New-AzResourceGroup -name $ResourceGroupName -Location $Location
 New-AzAppServicePlan -ResourceGroupName $ResourceGroupName `
 -Location $Location -Tier "B1" -NumberofWorkers 1 -Name $AppServicePlanName
 
+
 #Creating Azure Web App
 New-AzWebApp -ResourceGroupName $ResourceGroupName -Name $WebAppName `
 -Location $Location -AppServicePlan $AppServicePlanName

@@ -5,9 +5,11 @@ $WorkspaceName="vmrandomws2703"
 $ResourceGroupName="RG8"
 $Location="North Europe"
 
+
 #Creating LAW
 $LogAnalyticsWorkspace=New-AzOperationalInsightsWorkspace -Location $Location `
 -Name $WorkspaceName -ResourceGroupName $ResourceGroupName
+
 
 #Adding from windows event log
 New-AzOperationalInsightsWindowsEventDataSource -ResourceGroupName $ResourceGroupName `
@@ -26,6 +28,7 @@ $WorkspaceKey=(Get-AzOperationalInsightsWorkspaceSharedKeys `
 $VMNames="appvm"
 $PublicSettings=@{"workspaceId" = $WorkspaceID}
 $ProtectedSettings=@{"workspaceKey" = $WorkspaceKey}
+
 
 #If multiple VMs foreach can be used
 foreach($VM in $VMNames)

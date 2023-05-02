@@ -14,12 +14,14 @@ $ActionGroupName="AdminGroup"
 $ReceiverGroupName="EmailAdmin"
 $ReceiverGroupEmail="raitis.neitals@gmail.com"
 
+
 #Creating Action group
 $Receiver=New-AzActionGroupReceiver -Name $ReceiverGroupName `
 -EmailReceiver -EmailAddress $ReceiverGroupEmail
 
 $ActionGroup=Set-AzActionGroup -Name $ActionGroupName -ResourceGroupName $ResourceGroupName `
 -ShortName $ActionGroupName -Receiver $Receiver
+
 
 #Creating alert for existing VM
 $ResourceName="appvm"

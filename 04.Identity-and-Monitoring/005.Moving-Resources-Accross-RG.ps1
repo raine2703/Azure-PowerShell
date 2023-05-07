@@ -2,29 +2,76 @@
 
 #Bulding setup - Creating Azure Web App
 
-$ResourceGroupName="RG3"
-$Location="North Europe"
+$SourceResourceGroupName="RG3"
+$SourceLocation="North Europe"
 $AppServicePlanName="AppServicePlan"
 $WebAppName="rnwebpage2703x2"
 
 
 #Creating App Service Plan
-New-AzResourceGroup -name $ResourceGroupName -Location $Location
+New-AzResourceGroup -name $SourceResourceGroupName -Location $SourceLocation
 
-New-AzAppServicePlan -ResourceGroupName $ResourceGroupName `
--Location $Location -Tier "B1" -NumberofWorkers 1 -Name $AppServicePlanName
+New-AzAppServicePlan -ResourceGroupName $SourceResourceGroupName `
+-Location $SourceLocation -Tier "B1" -NumberofWorkers 1 -Name $AppServicePlanName
 
 
 #Creating Azure Web App
-New-AzWebApp -ResourceGroupName $ResourceGroupName -Name $WebAppName `
--Location $Location -AppServicePlan $AppServicePlanName
+New-AzWebApp -ResourceGroupName $SourceResourceGroupName -Name $WebAppName `
+-Location $SourceLocation -AppServicePlan $AppServicePlanName
 
 
 #Creating another RG
-$ResourceGroupName="RG4"
-$Location="West Europe"
+$DestResourceGroupName="RG4"
+$DestLocation="West Europe"
 
-New-AzResourceGroup -name $ResourceGroupName -Location $Location
+New-AzResourceGroup -name $DestResourceGroupName -Location $DestLocation
 
 
-#Logical part and checking
+#Moving Resources
+function Get-ResourceGroupName {
+    param (
+        [String] $ResourceName
+    )
+
+    $Resource=Get-AzResource -Name $ResourceName
+    return $Resource.ResourceGroupName
+    
+}
+
+
+function Get-ResourceGroupID {
+    param (
+        [String] $ResourceGroupName
+    )
+
+    $ResourceGroup=Get-AzResourceGroup -Name $ResourceGroupName
+    return $ResourceGroup.ResourceId
+}
+
+function Get-ResourceId {
+    param (
+        [String] $ResourceName
+    )
+
+    $Resource=Get-AzResource -Name $ResourceName
+    return $Resource.ResourceId
+    
+}
+
+$ResourceName="rnwebpage2703x2"
+$DestResourceGroupName="RG4"
+
+$SourceResourceGroupName=(Get-ResourceGroupName $ResourceName)
+$SourceResourceGroupId=(Get-ResourceGroupID $SourceResourceGroupName)
+$DestinationResourceGroupId=(Get-ResourceGroupID $DestResourceGroupName)
+$ResourceId=(Get-ResourceId $ResourceName)
+
+#Before moving its usefull to check if it's possible
+Invoke-AzResourceAction -Action validateMoveResources `
+-ResourceId $SourceResourceGroupId `
+-Parameters @{resources=@($ResourceId);targetResourceGroup=$DestinationResourceGroupId} `
+-Force
+
+#Moving resources
+Move-AzResource -DestinationResourceGroupName $DestResourceGroupName `
+-ResourceId $ResourceId

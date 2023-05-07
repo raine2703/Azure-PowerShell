@@ -1,1 +1,1 @@
-Notes from Azure Powershell course.
+# Azure Powershell labs

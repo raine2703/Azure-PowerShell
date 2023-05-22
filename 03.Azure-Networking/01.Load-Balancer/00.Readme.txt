@@ -1,0 +1,3 @@
+Creating Standard Load Balancer in front of Backend VMs
+Use load balancers $PublicIP to access one of VMs in Backend Pool
+Note that VMs do not have public IP

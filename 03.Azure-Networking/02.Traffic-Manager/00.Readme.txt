@@ -1,0 +1,2 @@
+Creating VMs in two different regions
+Creating Traffic Manager with Priority routing that provides Load balancing between Azure Regions

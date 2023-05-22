@@ -1,2 +1,3 @@
 Creating VMs in two different regions
 Creating Traffic Manager with Priority routing that provides Load balancing between Azure Regions
+Based on Routing method and location you will be routed to different Region VM

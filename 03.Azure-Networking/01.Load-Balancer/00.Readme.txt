@@ -1,3 +1,4 @@
 Creating Standard Load Balancer in front of Backend VMs
+IIS installed on all backend VMs
 Use load balancers $PublicIP to access one of VMs in Backend Pool
 Note that VMs do not have public IP

@@ -1,4 +1,4 @@
-Creating Azure Firewall and experimenting with NAT and Aplications Rules.
+Creating Azure Firewall and experimenting with NAT and Aplications Rules
 NAT rule: RDP to firewall-ip:4000 will connect to  VM private IP 10.0.0.4:3839
 Application rule: Allowing traffic from VM to www.google.com via
-Routing all traffic from VMs Vnet/Subnet true Azure Firewall with Route table. By default all traffic will be denied and surf out won't work.
+Routing all traffic from VMs Vnet/Subnet true Azure Firewall with Route table. By default all traffic will be denied and surf out won't work
